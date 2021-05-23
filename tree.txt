@@ -1,0 +1,37 @@
+#/user
+	#/:id - retrieves user by ID
+	#/login - retrieve access token
+	#/logout - remove refresh token from validity
+	#/register - make new account
+
+/header
+- provide document ID
+	#/add - add into header
+	- provide parent header ID, data in JSON
+	/edit - edit header title
+	#/delete - delete subheader by ID
+
+/data
+- provide document ID, header ID
+	#/add - add into header
+	#/edit - edit data by ID
+	#/del - delete data from header
+	#/app - approve/disapprove
+
+/document
+	#/create - makes new document
+	#/:id - retrieve document by ID
+	#/delete - delete full document
+	#/upvote - upvote document
+	#/downvote - downvote document
+
+	#/page - retrieves documents by pages
+	{
+		searchQuery: String,
+		searchMatchCase: Boolean,
+		filter: Object (follow MongoDB rich querying),
+		sort: Object (follow MongoDB rich querying),
+		pageCount: Integer (default: 10),
+		pageNo: Integer (default: 1)
+	}
+	- additional params for search, filter, sort
